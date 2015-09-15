@@ -4,7 +4,6 @@ require './lib/player'
 require './lib/game'
 require './lib/cell'
 require './lib/board'
-require './calculator'
 
 game = Game.new
 player1 = Player.new
