@@ -1,8 +1,15 @@
 require 'sinatra/base'
 
 class BattleshipsWeb < Sinatra::Base
+  set :views, proc {File.join(root, '..', 'views')}
   get '/' do
-    'Hello we have done it our first test and we make some changes! and and so on '
+   erb :index
+  end
+
+  get '/newgame' do
+
+  "What's your name?"
+
   end
 
   # start the server if ruby file executed directly
