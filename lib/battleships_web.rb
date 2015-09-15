@@ -1,6 +1,6 @@
 require 'sinatra/base'
 
-class battle_ships_september < Sinatra::Base
+class BattleshipsWeb < Sinatra::Base
   get '/' do
     'Hello battle_ships_september!'
   end
