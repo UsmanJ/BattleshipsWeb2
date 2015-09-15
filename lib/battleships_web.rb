@@ -1,5 +1,6 @@
 require 'sinatra/base'
 
+
 class BattleshipsWeb < Sinatra::Base
   set :views, proc {File.join(root, '..', 'views')}
   get '/' do
@@ -7,9 +8,15 @@ class BattleshipsWeb < Sinatra::Base
   end
 
   get '/newgame' do
+    "What's your name?"
+  end
 
-  "What's your name?"
-
+  get '/add' do
+  number_1 = params[:number_1]
+  number_2 = params[:number_2]
+  p params
+  @result = Calculator.add(number_1, number_2)
+  erb :result
   end
 
   # start the server if ruby file executed directly

@@ -4,6 +4,7 @@ require './lib/player'
 require './lib/game'
 require './lib/cell'
 require './lib/board'
+require './calculator'
 
 game = Game.new
 player1 = Player.new
@@ -17,15 +18,12 @@ game.add_player(player2)
 player1.board = board1
 player2.board = board2
 
-fleet1.each_with_index do |ship, index| 
+fleet1.each_with_index do |ship, index|
 	coord = ("A" + (index + 1).to_s).to_sym
 	board1.place(ship, coord, :vertically)
 end
 
-fleet2.each_with_index do |ship, index| 
+fleet2.each_with_index do |ship, index|
 	coord = ("A" + (index + 1).to_s).to_sym
 	board2.place(ship, coord, :vertically)
 end
-
-
-
