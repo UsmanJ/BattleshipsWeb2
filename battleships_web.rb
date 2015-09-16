@@ -8,24 +8,30 @@ require './lib/player'
 
 
 class BattleshipsWeb < Sinatra::Base
+  enable  :sessions
   set :views, proc {File.join(root, 'views')}
+
   get '/' do
-   erb :index
+    @game =Game.new
+    erb :index
   end
 
   get '/newgame' do
     "What's your name?"
-    @player1 = params[:name]
+    $player1 = params[:name]
+    erb :new_game
+  end
 
-      erb :new_game
-
+  post '/newgame' do
+    session[:name] = $player1
+    session[:name]
+    redirect ('/board')
   end
 
   get '/board' do
-    @game =Game.new
-    @player1 = Player.new
+    p session[:name]
+    p $player1
     erb :board
-
   end
 
 # get '/new_game' do
