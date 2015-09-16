@@ -18,13 +18,6 @@ class BattleshipsWeb < Sinatra::Base
     erb :new_game
   end
 
-  get '/add' do
-  number_1 = params[:number_1]
-  number_2 = params[:number_2]
-  @result = Calculator.add(number_1, number_2)
-  erb :result
-  end
-
   get '/test_board' do
 
     erb :test_board
