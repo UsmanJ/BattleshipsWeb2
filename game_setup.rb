@@ -5,6 +5,7 @@ require './lib/game'
 require './lib/cell'
 require './lib/board'
 
+
 game = Game.new
 player1 = Player.new
 player2 = Player.new

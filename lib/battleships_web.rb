@@ -1,4 +1,9 @@
 require 'sinatra/base'
+require_relative 'water'
+require_relative 'ship'
+require_relative 'cell'
+require_relative 'board'
+require_relative 'game'
 
 
 class BattleshipsWeb < Sinatra::Base
@@ -10,7 +15,7 @@ class BattleshipsWeb < Sinatra::Base
   get '/newgame' do
     "What's your name?"
     @visitor = params[:name]
-# erb :player1
+erb :player1
   end
 
   get '/add' do
@@ -18,6 +23,12 @@ class BattleshipsWeb < Sinatra::Base
   number_2 = params[:number_2]
   @result = Calculator.add(number_1, number_2)
   erb :result
+  end
+
+  get '/test_board' do
+
+    erb :test_board
+    erb :test_board1
   end
 
 # get '/new_game' do
