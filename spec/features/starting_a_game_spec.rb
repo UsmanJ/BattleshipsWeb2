@@ -11,7 +11,7 @@ feature 'Starting new game' do
   visit '/newgame'
   fill_in('name', with: "Philip")
   click_button 'submit'
-  expect(page).to have_content "Hello, Philip are you ready to play Battleships?"
+  expect(page).to have_content "Hello Philip, are you ready to play Battleships?"
 end
 
   xscenario "I click on a button which takes me to the board" do
