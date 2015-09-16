@@ -1,2 +1,17 @@
-<a> "The game begins now" </a>
-<% game=Game.new %>
+<div style='border: 3px dashed red'>
+  <% if @visitor %>
+   <div>
+     <form action='/test_board'>
+     Hello, <%= @visitor %> are you ready to play Battleships?
+     <input type="submit" value="Yes">
+    </form>
+   </div>
+  <% else %>
+    <form action='/newgame'>
+      What's your name?
+      <input type="text" name="name">
+      <input type="submit" value="submit">
+    </form>
+  <% end %>
+  <img src='https://upload.wikimedia.org/wikipedia/commons/7/7d/Peresvet1901.jpg'>
+</div>

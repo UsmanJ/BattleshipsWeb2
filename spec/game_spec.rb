@@ -14,7 +14,7 @@ describe Game do
 	it "can have a second player added" do
 		game.add_player(player1)
 		game.add_player(player2)
-		expect(game.player2).to eq player2bund
+		expect(game.player2).to eq player2
 	end
 
 	it "knows when there are two players" do

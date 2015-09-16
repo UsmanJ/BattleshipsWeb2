@@ -1,13 +1,13 @@
 require 'sinatra/base'
-require_relative 'water'
-require_relative 'ship'
-require_relative 'cell'
-require_relative 'board'
-require_relative 'game'
+require './lib/water'
+require './lib/ship'
+require './lib/cell'
+require './lib/board'
+require './lib/game'
 
 
 class BattleshipsWeb < Sinatra::Base
-  set :views, proc {File.join(root, '..', 'views')}
+  set :views, proc {File.join(root, 'views')}
   get '/' do
    erb :index
   end
@@ -15,7 +15,7 @@ class BattleshipsWeb < Sinatra::Base
   get '/newgame' do
     "What's your name?"
     @visitor = params[:name]
-erb :player1
+    erb :new_game
   end
 
   get '/add' do
@@ -28,7 +28,7 @@ erb :player1
   get '/test_board' do
 
     erb :test_board
-    erb :test_board1
+
   end
 
 # get '/new_game' do
