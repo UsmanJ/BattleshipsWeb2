@@ -17,8 +17,14 @@ end
   scenario "I click on a button which takes me to the board" do
     visit 'newgame?name=Philip'
     click_button 'Yes'
-    expect(page).to have_content "A1"
+    expect(page).to find("div").text
   end
 
+  xscenario "I can place a ship on the board" do
+    visit 'newgame?name=Philip'
+    click_button 'Place Ship'
+    expect(page).to have_content "Place Battleship"
+
+  end
 
   end
