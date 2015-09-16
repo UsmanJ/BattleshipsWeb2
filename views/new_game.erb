@@ -1,8 +1,8 @@
 <div style='border: 3px dashed red'>
-  <% if @visitor %>
+  <% if @player1 %>
    <div>
-     <form action='/test_board'>
-     Hello, <%= @visitor %> are you ready to play Battleships?
+     <form action='/board'>
+     Hello, <%= @player1 %> are you ready to play Battleships?
      <input type="submit" value="Yes">
     </form>
    </div>

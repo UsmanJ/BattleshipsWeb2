@@ -4,6 +4,7 @@ require './lib/ship'
 require './lib/cell'
 require './lib/board'
 require './lib/game'
+require './lib/player'
 
 
 class BattleshipsWeb < Sinatra::Base
@@ -14,13 +15,16 @@ class BattleshipsWeb < Sinatra::Base
 
   get '/newgame' do
     "What's your name?"
-    @visitor = params[:name]
-    erb :new_game
+    @player1 = params[:name]
+
+      erb :new_game
+
   end
 
-  get '/test_board' do
-
-    erb :test_board
+  get '/board' do
+    @game =Game.new
+    @player1 = Player.new
+    erb :board
 
   end
 
