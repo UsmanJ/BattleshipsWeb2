@@ -1,17 +1,16 @@
 <div style='border: 3px dashed red'>
-  <% if $player1 %>
+  <% if @name %>
    <div>
-     <form action='/newgame' method="post">
-     Hello, <%= $player1 %> are you ready to play Battleships?
-     <input type="submit" value="Yes">
+     <form action='/board' method="get">
+     Hello <%= @name %>, are you ready to play Battleships?
+     <input type="submit" value="Start Game">
     </form>
    </div>
   <% else %>
     <form action='/newgame'>
       What's your name?
-      <input type="text" name="name">
+      <input type="text" name="name" required>
       <input type="submit" value="submit">
     </form>
   <% end %>
-  <img src='https://upload.wikimedia.org/wikipedia/commons/7/7d/Peresvet1901.jpg'>
 </div>
