@@ -10,12 +10,6 @@ class Board
 				end
 		end
 	end
-	#
-	# def print_board
-	# 	a = grid.map { |key, value| key }
-	# 	b = a.each_slice(10).to_a
-	#   c = b.map { |b| b }
-	# end
 
 	def place(ship, coord, orientation = :horizontally)
 		coords = [coord]

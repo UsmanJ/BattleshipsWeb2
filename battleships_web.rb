@@ -18,7 +18,7 @@ class BattleshipsWeb < Sinatra::Base
 
   get '/newgame' do
     "What's your name?"
-    $player1 = params[:name]
+    $player1 = Player.new(params[:name])
     erb :new_game
   end
 
@@ -33,14 +33,6 @@ class BattleshipsWeb < Sinatra::Base
     p $player1
     erb :board
   end
-
-# get '/new_game' do
-#   erb :new_game
-# end
-
-
-
-
 
   # start the server if ruby file executed directly
   run! if app_file == $0
