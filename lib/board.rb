@@ -1,11 +1,21 @@
 class Board
 	attr_reader :grid
 
-	def initialize(content)
+	def initialize(cell)
 		@grid = {}
 		[*"A".."J"].each do |l|
-			[*1..10].each {|n| @grid["#{l}#{n}".to_sym] = content.new}
+			[*1..10].each do |n|
+				@grid["#{l}#{n}".to_sym] = cell.new
+					@grid["#{l}#{n}".to_sym].content = Water.new
+				end
 		end
+	end
+
+	def print_board
+		a = grid.map { |key, value| key }
+		b = a.each_slice(10).to_a
+	  c = b.map { |b| b }
+
 	end
 
 	def place(ship, coord, orientation = :horizontally)
@@ -30,26 +40,6 @@ class Board
 	def ships_count
 		ships.count
 	end
-
-	# def print_board
-	# 	printed_board = "<div style='height:50px; width:550px;'>"
-	# 	[*"A".."J"].each do |l| #iterate through letters
-	# 		[*1..10].each do |n|#iterate through numbers
-	# 			if grid["#{l}#{n}".to_sym].content.is_a?(Water) #any letter, number as symbol eg :A1 rather than A1 is water etc...
-	# 				printed_board += "<div style='background-color:#0000FF; height:50px; width:50px; display:inline-block; border: 2px dashed red;'> </div>"
-	# 			elsif grid["#{l}#{n}".to_sym].content.is_a?(Ship)
-	# 				printed_board += "<div style='background-color:#008800; height:50px; width:50px; display:inline-block; border: 2px dashed red;'> </div>"
-	# 			end
-	# 		end
-	# 	end
-	# 	printed_board += "</div>"
-	# 	printed_board
-	# end
-
-	# def say_hello
-	# p "Hello - this is the board speaking"
-	#
-	# end
 
 private
 
@@ -82,5 +72,4 @@ private
 		raise_errors_if_cant_place_ship(coords)
 		coords.each{|coord|grid[coord].content = ship}
 	end
-
 end
