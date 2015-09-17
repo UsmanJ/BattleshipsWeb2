@@ -1,9 +1,7 @@
 <!-- Hello, <%= $name %>! Welcome to your game of Battleships! -->
-<% @board = Board.new(Cell) %>
 <%= @board.print_board %>
-
 <div>
-<form action="/board" method: "post">
+<form action="/board" method="post">
  Set Aircraft Carrier position:
  <input type="text" name="position1" autofocus>
  <br>
@@ -12,32 +10,32 @@
  <br>
  <br>
  Set Battleship position:
- <input type="text" name="position2" autofocus>
+ <input type="text" name="position2" autofocus; required>
  <br>
  <input type="radio" name="orientation2" value="horizontal">Horizontal
  <input type="radio" name="orientation2" value="vertical">Vertical
  <br>
  <br>
  Set Destroyer position:
- <input type="text" name="position3" autofocus>
+ <input type="text" name="position3" autofocus; required>
  <br>
  <input type="radio" name="orientation3" value="horizontal">Horizontal
  <input type="radio" name="orientation3" value="vertical">Vertical
  <br>
  <br>
  Set Submarine position:
- <input type="text" name="position4" autofocus>
+ <input type="text" name="position4" autofocus; required>
  <br>
  <input type="radio" name="orientation4" value="horizontal">Horizontal
  <input type="radio" name="orientation4" value="vertical">Vertical
  <br><br>
  Set Patrol Boat position:
- <input type="text" name="position5" autofocus>
+ <input type="text" name="position5" autofocus; required>
  <br>
  <input type="radio" name="orientation5" value="horizontal">Horizontal
  <input type="radio" name="orientation5" value="vertical">Vertical
  <br>
  <br>
- <input type="submit" value="Set">
+ <input type="submit" value="Place Ships">
 </form>
 </div>

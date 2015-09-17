@@ -1,10 +1,5 @@
 require 'sinatra/base'
-require './lib/water'
-require './lib/ship'
-require './lib/cell'
-require './lib/board'
-require './lib/game'
-require './lib/player'
+require_relative 'game_setup'
 
 
 class BattleshipsWeb < Sinatra::Base
@@ -12,10 +7,10 @@ class BattleshipsWeb < Sinatra::Base
   enable  :sessions
   set :views, proc {File.join(root, 'views')}
 
-  p @game =Game.new
-  p $player = Player.new
 
   get '/' do
+    p $game =Game.new
+    p $player = Player.new
     erb :index
   end
 
@@ -30,7 +25,28 @@ class BattleshipsWeb < Sinatra::Base
   get '/board' do
     p session[:name]
     p $player
+    p $ship = Ship.aircraft_carrier
+    p $position1
+    p $orientation1
+    p $position2
+    p $orientation2
+    # p @board.place($ship, $position1, $orientation1)
+    p @board = Board.new(Cell)
     erb :board
+  end
+
+  post '/board' do
+    $position1 = params[:position1]
+    $orientation1 = params[:orientation1]
+    $position2 = params[:position2]
+    $orientation2 = params[:orientation2]
+    $position3 = params[:position3]
+    $orientation3 = params[:orientation3]
+    $position4 = params[:position4]
+    $orientation4 = params[:orientation4]
+    $position5 = params[:position5]
+    $orientation5 = params[:orientation5]
+    redirect ('/board')
   end
 
   # start the server if ruby file executed directly
