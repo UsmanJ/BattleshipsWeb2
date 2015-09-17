@@ -24,7 +24,6 @@ end
     visit 'newgame?name=Philip'
     click_button 'Place Ship'
     expect(page).to have_content "Place Battleship"
-
   end
 
   end
