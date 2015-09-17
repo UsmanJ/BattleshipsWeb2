@@ -45,6 +45,7 @@ class BattleshipsWeb < Sinatra::Base
     $orientation4 = params[:orientation4].to_sym
     $position5 = params[:position5].to_sym
     $orientation5 = params[:orientation5].to_sym
+    $board.place($ship, $position1, $orientation1)
     redirect ('/board')
   end
 
