@@ -21,20 +21,15 @@ class BattleshipsWeb < Sinatra::Base
 
   get '/newgame' do
     "What's your name?"
-    @name = params[:name]
-    $player.name = params[:name]
+    p $name = params[:name]
+    p $player.name = params[:name]
+    p session[:name] = params[:name]
     erb :new_game
-  end
-
-  post '/newgame' do
-    session[:name] = $player1
-    session[:name]
-    redirect ('/board')
   end
 
   get '/board' do
     p session[:name]
-    p $player1
+    p $player
     erb :board
   end
 
