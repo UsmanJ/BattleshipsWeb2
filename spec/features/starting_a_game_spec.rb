@@ -8,20 +8,20 @@ feature 'Starting new game' do
   end
 
  scenario 'I am asked if I am ready to play battleships' do
-  visit '/newgame'
+  visit '/new_game'
   fill_in('name', with: "Philip")
-  click_button 'submit'
-  expect(page).to have_content "Hello Philip, are you ready to play Battleships?"
+  click_button 'Submit'
+  expect(page).to have_content "Hello Philip! Welcome to your game of Battleships!"
 end
 
   xscenario "I click on a button which takes me to the board" do
-    visit 'newgame?name=Philip'
+    visit 'new_game?name=Philip'
     click_button 'Yes'
     expect(page).to have_content("Welcome to your board")
   end
 
   xscenario "I can place a ship on the board" do
-    visit 'newgame?name=Philip'
+    visit 'new_game?name=Philip'
     click_button 'Place Ship'
     expect(page).to have_content "Place Battleship"
   end
