@@ -8,35 +8,43 @@ class BattleshipsWeb < Sinatra::Base
   set :views, proc {File.join(root, 'views')}
 
 
+  # $aircraft = Ship.aircraft_carrier
+
   get '/' do
-    p $game =Game.new
-    p $player = Player.new
+    # p $game =Game.new
+    # p $player = Player.new
     erb :index
   end
 
-  get '/newgame' do
-    "What's your name?"
-    p $name = params[:name]
-    p $player.name = params[:name]
-    p session[:name] = params[:name]
+  get '/new_game' do
+    # p @name = params[:name]
+    # p $player.name = params[:name]
+    # p session[:name] = params[:name]
     erb :new_game
   end
 
+  post '/new_game' do
+    session[:name] = params[:name]
+    redirect ('/new_game') if params[:name].empty?
+    redirect ('/board')
+  end
+
   get '/board' do
-    p session[:name]
-    p $player
-    p $aircraft = Ship.aircraft_carrier
-    p $position1
-    p $orientation1
-    p $position2
-    p $orientation2
-    p $board = Board.new(Cell)
-    p $board.ships
-    erb :board
+    if $board
+      @name = session[:name]
+      $board.place(Ship.aircraft_carrier, $position1, $orientation1)
+      @grid = $board.print_board
+    else
+      $board = Board.new(Cell)
+      @name = session[:name]
+      @grid = $board.print_board
+      # $board.place($aircraft, $position1, $orientation1)
+      erb :board
+    end
   end
 
   post '/board' do
-
+    # @aircraft = Ship.aircraft_carrier
     $position1 = params[:position1].to_sym
     $orientation1 = params[:orientation1].to_sym
     $position2 = params[:position2].to_sym
@@ -47,7 +55,6 @@ class BattleshipsWeb < Sinatra::Base
     $orientation4 = params[:orientation4].to_sym
     $position5 = params[:position5].to_sym
     $orientation5 = params[:orientation5].to_sym
-    $board.place($aircraft, $position1, $orientation1)
     redirect ('/board')
   end
 
