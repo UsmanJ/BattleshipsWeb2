@@ -7,16 +7,13 @@ class BattleshipsWeb < Sinatra::Base
   enable  :sessions
   set :views, proc {File.join(root, 'views')}
 
-
-  # $aircraft = Ship.aircraft_carrier
-
   get '/' do
     erb :index
   end
 
   get '/new_game' do
-    p $game =Game.new
-    p $player = Player.new
+    p $game = Game.new
+    p $player1 = Player.new
     # p @name = params[:name]
     # p $player.name = params[:name]
     # p session[:name] = params[:name]
@@ -25,23 +22,26 @@ class BattleshipsWeb < Sinatra::Base
 
   post '/new_game' do
     session[:name] = params[:name]
+    $game.add_player($player1)
     redirect ('/new_game') if params[:name].empty?
     redirect ('/board')
   end
 
   get '/board' do
-    if $board
+    if $board1
       @name = session[:name]
-      $board.place(Ship.aircraft_carrier, $position1, $orientation1)
-      $board.place(Ship.battleship, $position2, $orientation2)
-      $board.place(Ship.destroyer, $position3, $orientation3)
-      $board.place(Ship.submarine, $position4, $orientation4)
-      $board.place(Ship.patrol_boat, $position5, $orientation5)
-      @grid = $board.print_board
+      $board1.place(Ship.aircraft_carrier, $position1, $orientation1)
+      $board1.place(Ship.battleship, $position2, $orientation2)
+      $board1.place(Ship.destroyer, $position3, $orientation3)
+      $board1.place(Ship.submarine, $position4, $orientation4)
+      $board1.place(Ship.patrol_boat, $position5, $orientation5)
+      @grid = $board1.print_board
     else
-      $board = Board.new(Cell)
+      $board1 = Board.new(Cell)
+      $player1.board = $board1
       @name = session[:name]
-      @grid = $board.print_board
+      @grid = $board1.print_board
+      p $game
       erb :board
     end
   end
