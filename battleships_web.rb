@@ -30,22 +30,21 @@ class BattleshipsWeb < Sinatra::Base
     p $orientation1
     p $position2
     p $orientation2
-    # p @board.place($ship, $position1, $orientation1)
-    p @board = Board.new(Cell)
+    p $board = Board.new(Cell)
     erb :board
   end
 
   post '/board' do
-    $position1 = params[:position1]
-    $orientation1 = params[:orientation1]
-    $position2 = params[:position2]
-    $orientation2 = params[:orientation2]
-    $position3 = params[:position3]
-    $orientation3 = params[:orientation3]
-    $position4 = params[:position4]
-    $orientation4 = params[:orientation4]
-    $position5 = params[:position5]
-    $orientation5 = params[:orientation5]
+    $position1 = params[:position1].to_sym
+    $orientation1 = params[:orientation1].to_sym
+    $position2 = params[:position2].to_sym
+    $orientation2 = params[:orientation2].to_sym
+    $position3 = params[:position3].to_sym
+    $orientation3 = params[:orientation3].to_sym
+    $position4 = params[:position4].to_sym
+    $orientation4 = params[:orientation4].to_sym
+    $position5 = params[:position5].to_sym
+    $orientation5 = params[:orientation5].to_sym
     redirect ('/board')
   end
 

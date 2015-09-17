@@ -1,9 +1,9 @@
 <!-- Hello, <%= $name %>! Welcome to your game of Battleships! -->
-<%= @board.print_board %>
+<%= $board.print_board %>
 <div>
 <form action="/board" method="post">
  Set Aircraft Carrier position:
- <input type="text" name="position1" autofocus>
+ <input type="text" name="position1" autofocus; required>
  <br>
  <input type="radio" name="orientation1" value="horizontal">Horizontal
  <input type="radio" name="orientation1" value="vertical">Vertical
@@ -38,4 +38,5 @@
  <br>
  <input type="submit" value="Place Ships">
 </form>
+<!-- <% #$board.place($ship, $position1, $orientation1) %> -->
 </div>
