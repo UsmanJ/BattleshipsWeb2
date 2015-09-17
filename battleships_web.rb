@@ -25,16 +25,18 @@ class BattleshipsWeb < Sinatra::Base
   get '/board' do
     p session[:name]
     p $player
-    p $ship = Ship.aircraft_carrier
+    p $aircraft = Ship.aircraft_carrier
     p $position1
     p $orientation1
     p $position2
     p $orientation2
     p $board = Board.new(Cell)
+    p $board.ships
     erb :board
   end
 
   post '/board' do
+
     $position1 = params[:position1].to_sym
     $orientation1 = params[:orientation1].to_sym
     $position2 = params[:position2].to_sym
@@ -45,7 +47,7 @@ class BattleshipsWeb < Sinatra::Base
     $orientation4 = params[:orientation4].to_sym
     $position5 = params[:position5].to_sym
     $orientation5 = params[:orientation5].to_sym
-    $board.place($ship, $position1, $orientation1)
+    $board.place($aircraft, $position1, $orientation1)
     redirect ('/board')
   end
 
