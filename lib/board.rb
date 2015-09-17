@@ -39,9 +39,9 @@ class Board
 	  [*"A".."J"].each do |l| #iterate through letters
 	    [*1..10].each do |n|#iterate through numbers
 	      if grid["#{l}#{n}".to_sym].content.is_a?(Water) #any letter, number as symbol eg :A1 rather than A1 is water etc...
-	        printed_board += "<div style='background-color: green; height:50px; width:50px; display:inline-block; border: 2px dashed red;'> </div>"
+	        printed_board += "<div style='background-color: #2E9AFE; height:50px; width:50px; display:inline-block; border: 2px solid black;'> </div>"
 	      elsif grid["#{l}#{n}".to_sym].content.is_a?(Ship)
-	        printed_board += "<div style='background-color: red; height:50px; width:50px; display:inline-block; border: 2px dashed red;'> </div>"
+	        printed_board += "<div style='background-color: #6E6E6E; height:50px; width:50px; display:inline-block; border: 2px solid black;'> </div>"
 	      end
 	    end
 	  end
@@ -49,12 +49,7 @@ class Board
 	  printed_board
 	end
 
-	def say_hello
-	p "Hello - this is the board speaking"
-
-	end
-
-private
+	private
 
  	def next_coord(coord, orientation)
 		orientation == :vertically ? next_vertical(coord) : coord.next

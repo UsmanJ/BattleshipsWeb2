@@ -11,12 +11,12 @@ class BattleshipsWeb < Sinatra::Base
   # $aircraft = Ship.aircraft_carrier
 
   get '/' do
-    # p $game =Game.new
-    # p $player = Player.new
     erb :index
   end
 
   get '/new_game' do
+    p $game =Game.new
+    p $player = Player.new
     # p @name = params[:name]
     # p $player.name = params[:name]
     # p session[:name] = params[:name]
@@ -33,18 +33,20 @@ class BattleshipsWeb < Sinatra::Base
     if $board
       @name = session[:name]
       $board.place(Ship.aircraft_carrier, $position1, $orientation1)
+      $board.place(Ship.battleship, $position2, $orientation2)
+      $board.place(Ship.destroyer, $position3, $orientation3)
+      $board.place(Ship.submarine, $position4, $orientation4)
+      $board.place(Ship.patrol_boat, $position5, $orientation5)
       @grid = $board.print_board
     else
       $board = Board.new(Cell)
       @name = session[:name]
       @grid = $board.print_board
-      # $board.place($aircraft, $position1, $orientation1)
       erb :board
     end
   end
 
   post '/board' do
-    # @aircraft = Ship.aircraft_carrier
     $position1 = params[:position1].to_sym
     $orientation1 = params[:orientation1].to_sym
     $position2 = params[:position2].to_sym
