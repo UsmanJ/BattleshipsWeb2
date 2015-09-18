@@ -39,7 +39,6 @@ class BattleshipsWeb < Sinatra::Base
     else
       $board1 = Board.new(Cell)
       $player1.board = $board1
-      session[:board1] = $board1
       @name = session[:name]
       @grid = $board1.print_board
       p $game
@@ -59,6 +58,17 @@ class BattleshipsWeb < Sinatra::Base
     session[:position5] = params[:position5].to_sym
     session[:orientation5] = params[:orientation5].to_sym
     redirect ('/board')
+  end
+
+  post '/fire' do
+    session[:fire_position] = params[:fire_position].to_sym
+    redirect ('/fire')
+  end
+
+  get '/fire' do
+    $name = session[:name]
+    $board1.shoot_at(session[:fire_position])
+    erb :fire
   end
 
   # start the server if ruby file executed directly
